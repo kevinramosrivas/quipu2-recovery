@@ -14,8 +14,12 @@ export class AppComponent {
 
   public passwordMatch = true;
 
+  public token = '';
+
   constructor(){
-    console.log(this.ruta.snapshot.queryParams);
+    if(this.ruta.snapshot.queryParams['token'] != undefined){
+      this.token = this.ruta.snapshot.queryParams['token'];
+    }
   }
 
   public paswwordNewForm = this.fb.group({
@@ -24,8 +28,11 @@ export class AppComponent {
   });
 
   public onSubmit(): void {
-    console.log(this.paswwordNewForm.value);
-    console.log(this.checkPasswordMatch());
+    let parameters = {
+      newPassword: this.paswwordNewForm.get('newPassword')?.value,
+      token: this.token
+    }
+    console.log(parameters);
   }
 
   public  checkPasswordMatch(): boolean{

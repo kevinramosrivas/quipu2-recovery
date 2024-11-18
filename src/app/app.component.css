@@ -1,29 +1,19 @@
-/* reset-password.component.css */
-
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+.unmsm-logo{
+  width: 200px;
+}
+.quipu-logo{
+  width: 200px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background-color: #f4f4f9;
-  padding: 20px;
   position: relative;
 }
 
-.logos {
+.logos-container {
   position: absolute;
-  width: 100%;
   top: 10px;
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
 }
 
 .logo {
@@ -68,69 +58,12 @@ body, html {
   color: #333;
 }
 
-form .btn {
-  width: 100%;
-  margin-top: 15px;
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-}
-
-form .btn:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
 
 form .form-text {
   font-size: 0.9em;
   color: #777;
 }
 
-.password-strength {
-  margin-top: 10px;
-  position: relative;
-}
-
-.strength-bar {
-  height: 5px;
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 2px;
-  position: relative;
-}
-
-.strength-bar.weak::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 25%;
-  background-color: red;
-  border-radius: 2px;
-}
-
-.strength-bar.medium::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 50%;
-  background-color: orange;
-  border-radius: 2px;
-}
-
-.strength-bar.strong::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: green;
-  border-radius: 2px;
-}
 
 
 @media screen and (max-width: 768px) {

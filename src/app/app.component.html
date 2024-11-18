@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
   <!-- Logos en los extremos -->
-  <div class="logos">
-    <img src="assets/logo-left.png"  class="logo logo-left unmsm-logo">
-    <img src="./assets/logo-right2.png" alt="Logo Derecho" class="logo logo-right quipu-logo">
+  <div class="logos-container row w-100 justify-content-between align-items-center p-2">
+    <img src="assets/logo-left.png"  class="col-6 unmsm-logo">
+    <img src="assets/logo-quipu.svg" alt="col-6" class="quipu-logo">
   </div>
-
-   <!-- Título del formulario -->
+  <!-- Título del formulario -->
    <div class="form-title">
     <h2>Restablecer contraseña</h2>
     <h1>QUIPUCAMAYOC 2.0</h1>
@@ -45,7 +44,7 @@
         Las contraseñas no coinciden.
       </small>
 
-      <button type="submit" class="btn btn-primary"  [disabled]="paswwordNewForm.invalid">Restablecer Contraseña</button>
+      <button type="submit" class="btn btn-primary w-100 mt-1"  [disabled]="paswwordNewForm.invalid">Restablecer Contraseña</button>
     </form>
 
     <!-- Reloj con cuenta regresiva -->
@@ -55,4 +54,4 @@
 </div>
 
 
-<router-outlet />
+
