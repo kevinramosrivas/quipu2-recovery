@@ -5,21 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Agregar es
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContadorComponent } from './contador/contador.component';
-import { NivelSeguridadComponent } from './nivel-seguridad/nivel-seguridad.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ContadorComponent,
-    NivelSeguridadComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    ReactiveFormsModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

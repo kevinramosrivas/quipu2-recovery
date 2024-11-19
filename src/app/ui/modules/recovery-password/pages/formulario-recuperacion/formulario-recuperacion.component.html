@@ -1,0 +1,55 @@
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <!-- Logos en los extremos -->
+    <div class="logos-container row w-100 justify-content-between align-items-center p-2">
+      <img src="assets/logo-left.png"  class="col-6 unmsm-logo">
+      <img src="assets/logo-quipu.svg" alt="col-6" class="quipu-logo">
+    </div>
+    <!-- Título del formulario -->
+     <div class="form-title">
+      <h2>Restablecer contraseña</h2>
+      <h1>QUIPUCAMAYOC 2.0</h1>
+      <h5>Sistema Integral de Gestion Gubernamental</h5>
+    </div>
+  
+    <!-- Formulario de reestablecimiento de contraseña -->
+    <div class="form-container">
+      <form [formGroup]="paswwordNewForm" (ngSubmit)="onSubmit()">
+        <!-- Campo para la nueva contraseña -->
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">Nueva Contraseña</label>
+          <!-- <input type="password" class="form-control" id="newPassword" required> -->
+          <input type="password" class="form-control" formControlName="newPassword" required  [ngClass]="{'is-invalid':!isValidField('newPassword') }"> 
+          <span *ngIf="!isValidField('newPassword')" class="text-danger">
+            El campo debe contener al menos 8 caracteres incluyendo letras, números y símbolos.
+          </span>
+        </div>
+  
+        <!-- Campo para confirmar la nueva contraseña -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+          <!--<input type="password" class="form-control" id="confirmPassword" required> -->
+          <input type="password" class="form-control" formControlName="confirmPassword" required [ngClass]="{'is-invalid':!isValidField('confirmPassword') }">
+          <span *ngIf="!isValidField('confirmPassword')" class="text-danger">
+            El campo debe contener al menos 8 caracteres incluyendo letras, números y símbolos.
+          </span>
+        </div>
+  
+        
+        <!-- Indicador de seguridad de la contraseña -->
+        <nivel-seguridad [password]="paswwordNewForm.controls['newPassword'].value" *ngIf="paswwordNewForm.controls['newPassword'].value"></nivel-seguridad>
+  
+  
+        <!-- Mensaje si las contraseñas no coinciden -->
+        <small *ngIf="!checkPasswordMatch()" class="text-danger">
+          Las contraseñas no coinciden.
+        </small>
+  
+        <button type="submit" class="btn btn-primary w-100 mt-1"  [disabled]="paswwordNewForm.invalid">Restablecer Contraseña</button>
+      </form>
+  
+      <!-- Reloj con cuenta regresiva -->
+      <app-contador></app-contador>
+      
+    </div>
+  </div>
+  
