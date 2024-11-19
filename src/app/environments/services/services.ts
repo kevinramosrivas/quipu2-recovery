@@ -1,6 +1,6 @@
 export const SERVICES = Object.freeze({
     apiGateway: {
-      url: 'https://quipucamayoc.unmsm.edu.pe/byt/security',
+      url: 'http://localhost:8085/byt/security',
     },
   });
   

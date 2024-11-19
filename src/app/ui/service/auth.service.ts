@@ -16,8 +16,8 @@ export class AuthService {
     return this.http.post<ValidateCodeResponse>(this.baseUrl, 
       { 
         C: "USER",
-        S: "RECOVERY_START",
-        username: "45771171"
+        S: "RECOVERY_INFO",
+        id: codigo
       });
   }
 
