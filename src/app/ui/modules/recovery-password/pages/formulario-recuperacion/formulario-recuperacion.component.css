@@ -1,25 +1,4 @@
-.unmsm-logo{
-  width: 200px;
-}
-.quipu-logo{
-  width: 200px;
-}
 
-.container {
-  background-color: #f4f4f9;
-  position: relative;
-}
-
-.logos-container {
-  position: absolute;
-  top: 10px;
-  display: flex;
-}
-
-.logo {
-  max-width: 220px;
-  height: auto;
-}
 
 .form-title {
   margin-bottom: 5px;
@@ -50,14 +29,6 @@
   margin-top: 30px;
 }
 
-.timer {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #333;
-}
-
 
 form .form-text {
   font-size: 0.9em;
@@ -66,12 +37,3 @@ form .form-text {
 
 
 
-@media screen and (max-width: 768px) {
-  .unmsm-logo{
-    width: 130px;
-  }
-  .quipu-logo{
-    width: 130px;
-  }
-  
-}

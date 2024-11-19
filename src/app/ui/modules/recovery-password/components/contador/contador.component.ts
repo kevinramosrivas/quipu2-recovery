@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contador',
@@ -6,12 +6,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrl: './contador.component.css'
 })
 export class ContadorComponent implements OnInit, OnDestroy{
-  countdown: string = '5:00';  // Tiempo inicial (5 minutos)
+  countdown: string = '';  // Tiempo inicial (5 minutos)
   private interval: any;
+
+  @Input()
+  expirationTime: string = '';
+
 
   ngOnInit(): void {
     // Llamamos a la función para iniciar el contador
-    this.startCountdown();
+    let totalSeconds = this.calculateTimeLeft(this.expirationTime);
+    this.startCountdown(totalSeconds);
   }
 
   ngOnDestroy(): void {
@@ -21,8 +26,7 @@ export class ContadorComponent implements OnInit, OnDestroy{
     }
   }
 
-  startCountdown(): void {
-    let totalSeconds = 5 * 60; // 5 minutos en segundos
+  startCountdown(totalSeconds:number): void {
     this.updateCountdownDisplay(totalSeconds);
 
     this.interval = setInterval(() => {
@@ -36,17 +40,26 @@ export class ContadorComponent implements OnInit, OnDestroy{
   }
 
   updateCountdownDisplay(seconds: number): void {
-    // Calculamos los minutos y segundos restantes
+    // Calculamos las horas, minutos y segundos
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
 
-    // Formateamos los minutos y segundos para que siempre tengan dos dígitos
-    this.countdown = `${this.pad(minutes)}:${this.pad(remainingSeconds)}`;
+    // Actualizamos el valor de la variable countdown
+    this.countdown = `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(remainingSeconds)}`;
   }
 
   pad(value: number): string {
     // Añadimos un cero a la izquierda si el valor es menor a 10
     return value < 10 ? '0' + value : value.toString();
+  }
+
+  public calculateTimeLeft(expirationTime: string): number {
+    //calculamos los segundos totales que faltan
+    let expirationTimeConvert = new Date(expirationTime);
+    let difference =  expirationTimeConvert.getTime() - new Date().getTime();
+    return Math.floor(difference / 1000);
   }
 
 }

@@ -1,6 +1,6 @@
 export const SERVICES = Object.freeze({
     apiGateway: {
-      url: 'http://localhost:8085/byt/security',
+      url: 'http://172.16.179.36:8080/byt/security',
     },
   });
   

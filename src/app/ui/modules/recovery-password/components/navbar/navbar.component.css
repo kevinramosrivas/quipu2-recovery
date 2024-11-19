@@ -1,0 +1,36 @@
+.unmsm-logo{
+  width: 200px;
+}
+.quipu-logo{
+  width: 200px;
+}
+.navbar-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+
+.logos-container {
+  position: absolute;
+  top: 10px;
+  display: flex;
+}
+
+.logo {
+  max-width: 220px;
+  height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+  .unmsm-logo{
+    width: 130px;
+  }
+  .quipu-logo{
+    width: 130px;
+  }
+  
+}
