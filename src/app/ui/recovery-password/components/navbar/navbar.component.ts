@@ -3,6 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent { }

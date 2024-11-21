@@ -3,10 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ChangePasswordRequest, ValidateCodeResponse } from '../../../../core/interfaces/auth.interface';
 import { AuthService } from '../../../shared/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './formulario-recuperacion.component.html',
-  styleUrl: './formulario-recuperacion.component.css',
+  styleUrl: './formulario-recuperacion.component.scss',
 })
 export class FormularioRecuperacionComponent implements OnInit{
   title = 'quipu2-recovery';
@@ -23,6 +24,9 @@ export class FormularioRecuperacionComponent implements OnInit{
   public responseValidation: ValidateCodeResponse|null = null
 
   public codeExpired = false;
+
+  //La contraseña debe contener al menos 8 caracteres, letras o numeros consecutivos que no se repitan, al menos un número, una letra mayúscula y un carácter especial
+  public pattern = /^(?!.*(.)\1{2})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,}$/;
 
   ngOnInit(): void {
     this.token = this.router.snapshot.queryParams['token'];
@@ -41,39 +45,56 @@ export class FormularioRecuperacionComponent implements OnInit{
   }
 
   public paswwordNewForm = this.fb.group({
-    newPassword: ['',[Validators.required,Validators.minLength(8)]],
-    confirmPassword: ['',[Validators.required,Validators.minLength(8)]]
+    newPassword: ['',[Validators.required,Validators.minLength(8),Validators.pattern(this.pattern)]],
+    confirmPassword: ['',[Validators.required,Validators.minLength(8),Validators.pattern(this.pattern)]]
   });
 
   public onSubmit(): void {
+    if(this.paswwordNewForm.invalid || !this.checkPasswordMatch())return;
     let parameters = {
       newpass: this.paswwordNewForm.get('newPassword')!.value,
       id: this.token
     }
-    console.log(parameters);
     this.authService.cambiarContrasena(parameters as ChangePasswordRequest).subscribe(
       {
         next: (response) => {
-          console.log(response);
+          Swal.fire({
+            title: 'Contraseña cambiada',
+            text: 'La contraseña ha sido cambiada exitosamente',
+            icon: 'success',
+            allowOutsideClick: false,
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#203152'
+          }).then((result) => {
+            if(result.isConfirmed){
+              window.location.href = 'https://quipucamayoc.unmsm.edu.pe/Q20/';
+            }
+          });
         },
         error: (error) => {
-          console.log(error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Ha ocurrido un error al cambiar la contraseña, por favor intenta de nuevo',
+            icon: 'error',
+            allowOutsideClick: false,
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#203152'
+          });
         }
       }
     );
   }
 
   public  checkPasswordMatch(): boolean{
-    if(this.paswwordNewForm.get('newPassword')?.value == '' || this.paswwordNewForm.get('confirmPassword')?.value === ''){
+    const newPassword = this.paswwordNewForm.get('newPassword')?.value;
+    const confirmPassword = this.paswwordNewForm.get('confirmPassword')?.value;
+
+    if (!newPassword || !confirmPassword) {
       return true;
     }
-    if(this.paswwordNewForm.get('newPassword')?.value != this.paswwordNewForm.get('confirmPassword')?.value){
-      this.passwordMatch = true;
-      return false;
-    }else{
-      this.passwordMatch = false;
-      return true;
-    }
+
+    this.passwordMatch = newPassword === confirmPassword;
+    return this.passwordMatch;
   }
 
   public isValidField(field: string): boolean|undefined {
@@ -85,14 +106,13 @@ export class FormularioRecuperacionComponent implements OnInit{
     let input = event.currentTarget.previousElementSibling;
     if(input.getAttribute('type') == 'password'){
       input.setAttribute('type','text');
-      //cambiar al elemento i la clase fa-eye por fa-eye-slash
-      event.currentTarget.classList.remove('fa-eye');
-      event.currentTarget.classList.add('fa-eye-slash');
+      event.currentTarget.children[0].classList.remove('bi-eye');
+      event.currentTarget.children[0].classList.add('bi-eye-slash');
     }
     else{
       input.setAttribute('type','password');
-      event.currentTarget.classList.remove('fa-eye-slash');
-      event.currentTarget.classList.add('fa-eye');
+      event.currentTarget.children[0].classList.remove('bi-eye-slash');
+      event.currentTarget.children[0].classList.add('bi-eye');
     }
   }
 

@@ -8,7 +8,7 @@ import { NivelSeguridadComponent } from './components/nivel-seguridad/nivel-segu
 import { ContadorComponent } from './components/contador/contador.component';
 import { RecoveryLayoutComponent } from './layout/recovery-layout/recovery-layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
+import { NoEncontradoComponent } from './pages/codigo-no-encontrado/no-encontrado.component';
 
 
 @NgModule({

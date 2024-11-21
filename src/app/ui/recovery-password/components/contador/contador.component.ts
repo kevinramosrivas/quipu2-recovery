@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 @Component({
   selector: 'app-contador',
   templateUrl: './contador.component.html',
-  styleUrl: './contador.component.css'
+  styleUrl: './contador.component.scss'
 })
 export class ContadorComponent implements OnInit, OnDestroy{
   countdown: string = '';  // Tiempo inicial (5 minutos)

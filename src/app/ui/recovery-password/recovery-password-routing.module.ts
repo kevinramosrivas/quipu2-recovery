@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormularioRecuperacionComponent } from './pages/formulario-recuperacion/formulario-recuperacion.component';
 import { RecoveryLayoutComponent } from './layout/recovery-layout/recovery-layout.component';
-import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
+import { NoEncontradoComponent } from './pages/codigo-no-encontrado/no-encontrado.component';
 import { authValidationGuard } from '../shared/guards/AuthValidation.guard';
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
         canActivate: [authValidationGuard]
       },
       {
-        path: 'not-found',
+        path: 'code-not-found',
         component: NoEncontradoComponent
       }
     ]
