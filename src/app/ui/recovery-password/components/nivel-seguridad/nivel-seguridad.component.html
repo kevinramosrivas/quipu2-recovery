@@ -1,0 +1,9 @@
+<div class="mb-3 container-nivel-seguridad">
+    <label for="passwordStrength" class="form-label">Nivel de Seguridad</label>
+    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
+      <div class="progress-bar bg-success" [ngStyle]="{width: passwordStrength + '%'}">
+
+      </div>
+    </div>
+    <p class="form-text text-muted">{{message}}</p>
+</div>

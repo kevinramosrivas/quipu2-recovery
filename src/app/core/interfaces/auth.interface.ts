@@ -7,8 +7,8 @@ export interface ValidateCodeResponse {
 }
 
 export interface ChangePasswordRequest {
-    newPassword: string;
-    token: string;
+    newpass: string;
+    id: string;
 }
 
 

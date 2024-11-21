@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   { 
     path: 'recovery-password', 
-    loadChildren: () => import('./ui/modules/recovery-password/recovery-password.module').then(m => m.RecoveryPasswordModule)
+    loadChildren: () => import('./ui/recovery-password/recovery-password.module').then(m => m.RecoveryPasswordModule)
   }
 ];
 
