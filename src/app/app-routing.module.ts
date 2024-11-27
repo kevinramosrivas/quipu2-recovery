@@ -6,6 +6,10 @@ const routes: Routes = [
   { 
     path: 'recovery-password', 
     loadChildren: () => import('./ui/recovery-password/recovery-password.module').then(m => m.RecoveryPasswordModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'recovery-password'
   }
 ];
 

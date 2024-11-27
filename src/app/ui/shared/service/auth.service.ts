@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, of, throwError } from 'rxjs';
-import { SERVICES } from '../../../environments/services/services';
 import { ChangePasswordRequest, ErrorResponse, ValidateCodeResponse } from '../../../core/interfaces/auth.interface';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class AuthService {
 
   private http = inject(HttpClient);
 
-  private baseUrl = SERVICES.apiGateway.url;
+  private baseUrl = environment.apiGateway.url;
 
   private handleError(error: HttpErrorResponse){
     return throwError(() => {
