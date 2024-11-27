@@ -18,10 +18,10 @@ export const authValidationGuard: CanActivateFn = (route, state) => {
         router.navigate(['recovery-password/code-not-found']);
         return false;
       }
-      if (new Date(validateResponse.expireddate) < new Date()) {
-        router.navigate(['recovery-password/code-expired']);
-        return false;
-      }
+      // if (new Date(validateResponse.formattedExpireddate) < new Date()) {
+      //   router.navigate(['recovery-password/code-expired']);
+      //   return false;
+      // }
       return true;
     }),
     catchError((error) => {

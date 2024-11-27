@@ -6,7 +6,7 @@
               <h2 class="card-title mb-3">
                 Restablecer contraseña
               </h2>
-              <h3 class="mb-2" style="color: #203152;">
+              <h3 class="mb-2 text-primary">
                 QUIPUCAMAYOC 2.0
               </h3>
               <p class="text-muted mb-4">
@@ -19,7 +19,7 @@
                 <label for="newPassword" class="form-label">Nueva Contraseña</label>
                  <div class="input-group">
                    <input type="password" class="form-control" formControlName="newPassword" required  [ngClass]="{'is-invalid':!isValidField('newPassword') }"> 
-                    <button class="btn btn-outline-secondary" type="button" (click)="showPassword($event)">
+                    <button class="btn btn-secondary text-light" type="button" (click)="showPassword($event)">
                       <i class="bi bi-eye"></i> 
                     </button>
                  </div>
@@ -33,7 +33,7 @@
                 <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
                 <div class="input-group">
                   <input type="password" class="form-control" formControlName="confirmPassword" required [ngClass]="{'is-invalid':!isValidField('confirmPassword') }">
-                  <button class="btn btn-outline-secondary" type="button" (click)="showPassword($event)">
+                  <button class="btn btn-secondary text-light" type="button" (click)="showPassword($event)">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -51,7 +51,7 @@
               <nivel-seguridad [password]="paswwordNewForm.controls['newPassword'].value" ></nivel-seguridad>
         
         
-              <button type="submit" class="btn btn-recovery-primary w-100 mt-1"  [disabled]="paswwordNewForm.invalid || !this.checkPasswordMatch()"><i class="bi bi-lock"></i> Restablecer Contraseña</button>
+              <button type="submit" class="btn btn-primary w-100 mt-1"  [disabled]="paswwordNewForm.invalid || !this.checkPasswordMatch()"><i class="bi bi-lock"></i> Restablecer Contraseña</button>
             </form>
         
             <!-- Reloj con cuenta regresiva -->
