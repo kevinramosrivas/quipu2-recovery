@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChangePasswordRequest, ValidateCodeResponse } from '../../../../core/interfaces/auth.interface';
 import { AuthService } from '../../../shared/service/auth.service';
 import Swal from 'sweetalert2';
+import { environment } from '../../../../../environments/environment.development';
 
 @Component({
   templateUrl: './formulario-recuperacion.component.html',
@@ -24,8 +25,6 @@ export class FormularioRecuperacionComponent implements OnInit{
   public responseValidation: ValidateCodeResponse|null = null
 
   public codeExpired = false;
-
-  //La contraseña debe contener al menos 8 caracteres, letras o numeros consecutivos que no se repitan, al menos un número, una letra mayúscula y un carácter especial
   public pattern = /^(?!.*(.)\1{2})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,}$/;
 
   ngOnInit(): void {
@@ -67,14 +66,14 @@ export class FormularioRecuperacionComponent implements OnInit{
             confirmButtonColor: '#203152'
           }).then((result) => {
             if(result.isConfirmed){
-              window.location.href = 'https://quipucamayoc.unmsm.edu.pe/Q20/';
+              window.location.href = environment.redirectUrl;
             }
           });
         },
         error: (error) => {
           Swal.fire({
             title: 'Error',
-            text: 'Ha ocurrido un error al cambiar la contraseña, por favor intenta de nuevo',
+            text: error.message,
             icon: 'error',
             allowOutsideClick: false,
             confirmButtonText: 'Aceptar',

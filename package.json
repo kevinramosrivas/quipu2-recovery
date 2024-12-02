@@ -7,7 +7,15 @@
     "dev": "ng serve --host=0.0.0.0 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "clean:pre": "rimraf dist/PreQ20recovery-ofuscado",
+    "clean:pro": "rimraf dist/Q20recovery-ofuscado",
+    "cpy:pre": "cpy dist/PreQ20recovery-ofuscado/*.js dist/PreQ20recovery/ --flat && npm run clean:pre",
+    "cpy:pro": "cpy dist/Q20recovery-ofuscado/*.js dist/Q20recovery/ --flat && npm run clean:pro",
+    "ofuscar:pre": "javascript-obfuscator dist/PreQ20recovery --exclude dist/PreQ20recovery/assets --output dist/PreQ20recovery-ofuscado && npm run cpy:pre",
+    "build:prequipu": "ng build --configuration pruebas --base-href=/PreQ20recovery/ --output-path=dist/PreQ20recovery && npm run ofuscar:pre",
+    "ofuscar:pro": "javascript-obfuscator dist/Q20recovery --exclude dist/Q20recovery/assets --output dist/Q20recovery-ofuscado && npm run cpy:pro",
+    "build:quipu": "ng build --base-href=/Q20recovery/ --output-path=dist/Q20recovery && npm run ofuscar:pro"
   },
   "private": true,
   "dependencies": {
@@ -30,12 +38,15 @@
     "@angular/cli": "^18.2.11",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "javascript-obfuscator": "^4.1.1",
     "jasmine-core": "~5.2.0",
+    "cpy-cli": "^5.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.5.2"
   }
 }

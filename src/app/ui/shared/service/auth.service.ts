@@ -15,7 +15,7 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse){
     return throwError(() => {
-      let message = 'Un error ha ocurrido, por favor intenta de nuevo';
+      let message = error.error.message;
       let timestamp = new Date().getTime().toString();
 
       return {message, timestamp} as ErrorResponse
