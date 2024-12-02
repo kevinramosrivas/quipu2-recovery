@@ -16,6 +16,8 @@ export class AuthService {
   private handleError(error: HttpErrorResponse){
     return throwError(() => {
       let message = error.error.message;
+      message = message ? message : 'Error de conexión';
+      message = message.replaceAll('<br>', '');
       let timestamp = new Date().getTime().toString();
 
       return {message, timestamp} as ErrorResponse
