@@ -1,20 +1,39 @@
 <main class="container-fluid d-flex flex-column justify-content-center align-items-center w-100 ">
-        <div class="card border-0 shadow-sm animate__animated animate__zoomIn">
-          <div class="card-body p-4">
+        <div class="card border-0 shadow-sm animate__animated animate__zoomIn p-3">
+          <div class="card-body">
             <div class="row justify-content-center align-items-center">
-                <div class="col-12 text-center my-3">
-                    <img src="assets/code.svg" alt="Código no encontrado" class="img-fluid" style="width: 80px">
+                <div class="col-12 text-center mb-2 d-flex justify-content-center align-items-center">
+                  <div class="p-3 rounded-circle" style="background-color: #FEF2F2;">
+                    <img src="assets/exclamation.svg" alt="Código no encontrado" class="img-fluid" style="width: 35px">
+                  </div>
                 </div>
                 <div class="col-12 text-center">
-                    <h2 class="card-title mb-3">
+                    <h3 class="card-title text-danger mb-4">
                       Código no válido
-                    </h2>
-                    <p class="text-muted mb-4">
-                        El código de recuperación no es válido o ha expirado.
+                    </h3>
+                    <p class="card-text">
+                      El código de recuperación no es válido o ha expirado
+                      <br>
+                      Por favor, solicita un nuevo código
                     </p>
                 </div>
+                <div class="col-12 mt-4 d-flex flex-column gap-2 justify-content-center align-items-center">
+                  <a class="btn btn-primary w-75" [href]="enviroment.redirectUrl">
+                    <i class="bi bi-arrow-clockwise me-3"></i>
+                    Solicitar nuevo código
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+          <div class="d-flex gap-2 justify-content-center align-items-center mt-4 flex-md-row flex-column">
+            <p class="m-0">
+              ¿Necesitas ayuda? Comunícate con
+            </p>
+            <a [href]="enviroment.emailSupport" class="text-decoration-none ms-1" target="_blank">
+              <i class="bi bi-envelope-at"></i>
+              atencion.quipu&#64;unmsm.edu.pe
+            </a>
+          </div>
 </main>
-  
+        
